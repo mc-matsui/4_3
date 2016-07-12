@@ -43,11 +43,13 @@ $update_check = htmlspecialchars($_POST["update_check"], ENT_QUOTES);
 //更新理由
 $update_reason = htmlspecialchars($_POST["update_reason"], ENT_QUOTES);
 
-if (!preg_match("/^[0-9]{5}$/", $public_group_code)){
+if (!preg_match("/^[0-9]{5}$/", $public_group_code))
+{
 	print "全国地方公共団体コードは5桁の半角数字で入力してください！！";
 }
 
-if (!preg_match("/^[0-9]{3}$/", $zip_code_old)){
+if (!preg_match("/^[0-9]{3}$/", $zip_code_old))
+{
 	print "旧郵便番号は3桁の半角数字で入力してください！！";
 }
 
@@ -57,69 +59,101 @@ if (!preg_match("/^[0-9]{7}$/", $zip_code)){
 }
 */
 
-if (!preg_match('/^[ｦ-ﾟｰ ]+$/u', $prefecture_kana)){
+if (!preg_match('/^[ｦ-ﾟｰ ]+$/u', $prefecture_kana))
+{
 	print "都道府県名は半角ｶﾀｶﾅで入力してください！！";
 }
 
 
 
 //town_double_zip_code    (1=該当、0=該当せず)
-if ($town_double_zip_code == 1) {
+if ($town_double_zip_code == 1)
+{
 	$town_double_zip_code = "該当";
-}else{
+}
+else
+{
 	$town_double_zip_code = "該当せず";
 }
 
 //town_multi_address      (1=該当、0=該当せず)
-if ($town_multi_address == 1) {
+if ($town_multi_address == 1)
+{
 	$town_multi_address = "該当";
-}else{
+}
+else
+{
 	$town_multi_address = "該当せず";
 }
 
 //town_attach_district    (1=該当、0=該当せず)
-if ($town_attach_district == 1) {
+if ($town_attach_district == 1)
+{
 	$town_attach_district = "該当";
-}else{
+}
+else
+{
 	$town_attach_district = "該当せず";
 }
 
 //zip_code_multi_town     (1=該当、0=該当せず)
-if ($zip_code_multi_town == 1) {
+if ($zip_code_multi_town == 1)
+{
 	$zip_code_multi_town = "該当";
-}else{
+}
+else
+{
 	$zip_code_multi_town = "該当せず";
 }
 
 //update_check            (0=変更なし、1=変更あり、2=廃止(廃止データのみ使用))
-if ($update_check == 0) {
+if ($update_check == 0)
+{
 	$update_check = "変更なし";
-}elseif($update_check == 1) {
+}
+elseif($update_check == 1)
+{
 	$update_check = "変更あり";
-}else{
+}
+else
+{
 	$update_check = "廃止(廃止データのみ使用)";
 }
 
 //update_reason           (0=変更なし、1=市政・区政・町政・分区・政令指定都市施行、2=住居表示の実施、
 //3=区画整理、4=郵便区調整等、5=訂正、6=廃止(廃止データのみ使用))
-if ($update_reason == 0) {
+if ($update_reason == 0)
+{
 	$update_reason = "変更なし";
-}elseif($update_reason == 1) {
+}
+elseif($update_reason == 1)
+{
 	$update_reason = "市政・区政・町政・分区・政令指定都市施行";
-}elseif($update_reason == 2) {
+}
+elseif($update_reason == 2)
+{
 	$update_reason = "住居表示の実施";
-}elseif($update_reason == 3) {
+}
+elseif($update_reason == 3)
+{
 	$update_reason = "区画整理";
-}elseif($update_reason == 4) {
+}
+elseif($update_reason == 4)
+{
 	$update_reason = "郵便区調整等";
-}elseif($update_reason == 5) {
+}
+elseif($update_reason == 5)
+{
 	$update_reason = "訂正";
-}else{
+}
+else
+{
 	$update_reason = "廃止(廃止データのみ使用)";
 }
 
 if ($public_group_code == "" || $zip_code_old == "" || $zip_code == "" || $prefecture_kana == "" || $city_kana == "" ||
-$town_kana == "" || $prefecture == "" || $city == "" || $town == "" ) {
+$town_kana == "" || $prefecture == "" || $city == "" || $town == "" )
+{
 	print <<<EOF
 		<p>未入力項目があります</p><br><br>
 		<form>
@@ -127,7 +161,9 @@ $town_kana == "" || $prefecture == "" || $city == "" || $town == "" ) {
 		</form>
 EOF;
 
-}else{
+}
+else
+{
 	print <<<EOF
 
 	全国地方公共団体コード ： {$public_group_code}<br><br>

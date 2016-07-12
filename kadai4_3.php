@@ -13,11 +13,13 @@
 //DB接続
 $link = mysql_connect("localhost","root","3212");
 mysql_query("SET NAMES utf8",$link);
-if (!$link) {
+if (!$link)
+{
 	die("接続できませんでした" .mysql_error());
 }
 $db = mysql_select_db("test" , $link);
-if (!$db) {
+if (!$db)
+{
 	die("データベース接続エラーです。" .mysql_error());
 }
 
@@ -46,59 +48,90 @@ EOM;
 
 
 $result = mysql_query("SELECT * FROM `kadai_matsui_ziplist` WHERE 1");
-while ($row = mysql_fetch_array($result)) {
+while ($row = mysql_fetch_array($result))
+{
 	//town_double_zip_code    (1=該当、0=該当せず)
-	if ($row['town_double_zip_code'] == 1) {
+	if ($row['town_double_zip_code'] == 1)
+	{
 		$row['town_double_zip_code'] = "該当";
-	}else{
+	}
+	else
+	{
 		$row['town_double_zip_code'] = "該当せず";
 	}
 
 	//town_multi_address      (1=該当、0=該当せず)
-	if ($row['town_multi_address'] == 1) {
+	if ($row['town_multi_address'] == 1)
+	{
 		$row['town_multi_address'] = "該当";
-	}else{
+	}
+	else
+	{
 		$row['town_multi_address'] = "該当せず";
 	}
 
 	//town_attach_district    (1=該当、0=該当せず)
-	if ($row['town_attach_district'] == 1) {
+	if ($row['town_attach_district'] == 1)
+	{
 		$row['town_attach_district'] = "該当";
-	}else{
+	}
+	else
+	{
 		$row['town_attach_district'] = "該当せず";
 	}
 
 	//zip_code_multi_town     (1=該当、0=該当せず)
-	if ($row['zip_code_multi_town'] == 1) {
+	if ($row['zip_code_multi_town'] == 1)
+	{
 		$row['zip_code_multi_town'] = "該当";
-	}else{
+	}
+	else
+	{
 		$row['zip_code_multi_town'] = "該当せず";
 	}
 
 	//update_check            (0=変更なし、1=変更あり、2=廃止(廃止データのみ使用))
-	if ($row['update_check'] == 0) {
+	if ($row['update_check'] == 0)
+	{
 		$row['update_check'] = "変更なし";
-	}elseif($row['update_check'] == 1) {
+	}
+	elseif($row['update_check'] == 1)
+	{
 		$row['update_check'] = "変更あり";
-	}else{
+	}
+	else
+	{
 		$row['update_check'] = "廃止(廃止データのみ使用)";
 	}
 
 	//update_reason           (0=変更なし、1=市政・区政・町政・分区・政令指定都市施行、2=住居表示の実施、
 	//3=区画整理、4=郵便区調整等、5=訂正、6=廃止(廃止データのみ使用))
-	if ($row['update_reason'] == 0) {
+	if ($row['update_reason'] == 0)
+	{
 		$row['update_reason'] = "変更なし";
-	}elseif($row['update_reason'] == 1) {
+	}
+	elseif($row['update_reason'] == 1)
+	{
 		$row['update_reason'] = "市政・区政・町政・分区・政令指定都市施行";
-	}elseif($row['update_reason'] == 2) {
+	}
+	elseif($row['update_reason'] == 2)
+	{
 		$row['update_reason'] = "住居表示の実施";
-	}elseif($row['update_reason'] == 3) {
+	}
+	elseif($row['update_reason'] == 3)
+	{
 		$row['update_reason'] = "区画整理";
-	}elseif($row['update_reason'] == 4) {
+	}
+	elseif($row['update_reason'] == 4)
+	{
 		$row['update_reason'] = "郵便区調整等";
-	}elseif($row['update_reason'] == 5) {
+	}
+	elseif($row['update_reason'] == 5)
+	{
 		$row['update_reason'] = "訂正";
-	}else{
+	}
+	else
+	{
 		$row['update_reason'] = "廃止(廃止データのみ使用)";
 	}
 

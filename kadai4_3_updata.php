@@ -12,11 +12,13 @@
 //DB接続
 $link = mysql_connect("localhost","root","3212");
 mysql_query("SET NAMES utf8",$link);
-if (!$link) {
+if (!$link)
+{
 	die("接続できませんでした" .mysql_error());
 }
 $db = mysql_select_db("test" , $link);
-if (!$db) {
+if (!$db)
+{
 	die("データベース接続エラーです。" .mysql_error());
 }
 
@@ -76,9 +78,12 @@ mysql_query("$sql");
 
 $rst = mysql_query($sql, $link);
 
-if ($rst) {
+if ($rst)
+{
 	print "1件更新完了しました<br><br>";
-}else {
+}
+else
+{
 	print "更新失敗しました<br><br>";
 }
 
